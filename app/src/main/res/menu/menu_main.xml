@@ -1,0 +1,304 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.frank.word.WordActivity">
+    <item
+        android:id="@+id/item_pause"
+        android:title="@string/pause_img"
+        android:icon="@drawable/start_play_new"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/item_save_lrc"
+        android:visible="false"
+        android:title="@string/play_save"
+        android:icon="@drawable/save"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/open_file"
+        android:title="@string/play_open">
+        <menu>
+            <group android:checkableBehavior="none">
+                <item
+                    android:id="@+id/folder"
+                    android:title="@string/play_folder"
+                    android:icon="@drawable/open"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/folder_range"
+                    android:title="@string/play_open_from"
+                    android:icon="@drawable/cut"
+                    android:visible="false"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/choose_lesson"
+                    android:visible="false"
+                    android:title="@string/choose_lesson"
+                    android:icon="@drawable/lesson"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/open"
+                    android:title="@string/play_single"
+                    android:icon="@drawable/sole"
+                    app:showAsAction="always" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/read_only"
+        android:checkable="true"
+        android:checked="true"
+        android:title="@string/read_only"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/one_key"
+        android:title="@string/one_key"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/edit_word"
+        android:title="@string/edit_word"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/background"
+        android:checkable="true"
+        android:checked="false"
+        android:title="@string/background"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_single_check"
+        android:title="@string/choose_mode"
+        app:showAsAction="withText">
+        <menu>
+            <group
+                android:id="@+id/group_single"
+                android:checkableBehavior="single"
+                android:title="@string/choose_mode"
+                android:menuCategory="system">
+                <item
+                    android:id="@+id/single_menu_00"
+                    android:title="Infinite Loop" />
+                <item
+                    android:id="@+id/single_menu_01"
+                    android:checked="true"
+                    android:title="Loop 01" />
+                <item
+                    android:id="@+id/single_menu_02"
+                    android:title="Loop 02" />
+                <item
+                    android:id="@+id/single_menu_03"
+                    android:title="Loop 03" />
+                <item
+                    android:id="@+id/single_menu_04"
+                    android:title="Loop 04" />
+                <item
+                    android:id="@+id/single_menu_05"
+                    android:title="Loop 05" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/order"
+        android:title="@string/play_sequence">
+        <menu>
+            <group
+                android:id="@+id/group_order"
+                android:checkableBehavior="single"
+                android:title="@string/choose_mode"
+                android:menuCategory="system">
+                <item
+                    android:id="@+id/in_order"
+                    android:checked="true"
+                    android:title="@string/play_in_order"
+                    android:icon="@drawable/order" />
+                <item
+                    android:id="@+id/play_in_random"
+                    android:title="@string/play_in_random"
+                    android:icon="@drawable/shuffle" />
+                <item
+                    android:id="@+id/play_all_random"
+                    android:title="@string/play_all_random"
+                    android:icon="@drawable/random" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_show_range"
+        android:title="@string/play_show_range"
+        app:showAsAction="withText">
+        <menu>
+            <group
+                android:id="@+id/group_show_range"
+                android:checkableBehavior="single"
+                android:title="@string/play_show_range"
+                android:menuCategory="system">
+                <item
+                    android:id="@+id/show_range_all"
+                    android:checked="true"
+                    android:title="@string/show_all" />
+                <item
+                    android:id="@+id/show_range_chosen"
+                    android:title="@string/show_chosen" />
+                <item
+                    android:id="@+id/play_del"
+                    android:title="@string/show_remove" />
+                <item
+                    android:id="@+id/play_normal"
+                    android:title="@string/show_normal" />
+                <item
+                    android:id="@+id/play_favorite"
+                    android:title="@string/play_favorite" />
+                <item
+                    android:id="@+id/play_class"
+                    android:title="词性" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_show_type"
+        android:title="@string/play_show_type"
+        app:showAsAction="withText">
+        <menu>
+            <group
+                android:id="@+id/group_show_type"
+                android:checkableBehavior="single"
+                android:title="@string/play_show_type"
+                android:menuCategory="system">
+                <item
+                    android:id="@+id/show_word_all"
+                    android:checked="true"
+                    android:title="@string/show_all" />
+                <item
+                    android:id="@+id/show_word_foreign"
+                    android:title="@string/show_foreign" />
+                <item
+                    android:id="@+id/show_word_pronunciation"
+                    android:title="@string/show_pronunciation" />
+                <item
+                    android:id="@+id/show_word_native"
+                    android:title="@string/show_native" />
+                <item
+                    android:id="@+id/show_none"
+                    android:title="@string/show_none" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_play_mode"
+        android:title="@string/play_mode"
+        app:showAsAction="withText">
+        <menu>
+            <group
+                android:id="@+id/group_play_mode"
+                android:checkableBehavior="single"
+                android:title="@string/play_mode"
+                android:menuCategory="system">
+                <item
+                    android:id="@+id/mode_normal"
+                    android:checked="true"
+                    android:title="@string/normal_mode" />
+                <item
+                    android:id="@+id/mode_mute"
+                    android:title="@string/mute_mode" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_word_class"
+        android:title="词性"
+        android:visible="false"
+        app:showAsAction="withText">
+        <menu>
+            <group
+                android:id="@+id/group_word_class"
+                android:checkableBehavior="single"
+                android:title="词性"
+                android:menuCategory="system">
+                <item
+                    android:id="@+id/class_noun"
+                    android:checked="true"
+                    android:title="名词" />
+                <item
+                    android:id="@+id/class_daici"
+                    android:title="代词" />
+                <item
+                    android:id="@+id/class_shuci"
+                    android:visible="false"
+                    android:title="数词" />
+                <item
+                    android:id="@+id/class_verb_1"
+                    android:title="动1" />
+                <item
+                    android:id="@+id/class_verb_2"
+                    android:title="动2" />
+                <item
+                    android:id="@+id/class_verb_3"
+                    android:title="动3" />
+                <item
+                    android:id="@+id/class_adj_1"
+                    android:title="形1" />
+                <item
+                    android:id="@+id/class_adj_2"
+                    android:title="形2" />
+                <item
+                    android:id="@+id/class_liantici"
+                    android:title="连体词" />
+                <item
+                    android:id="@+id/class_fuci"
+                    android:title="副词" />
+                <item
+                    android:id="@+id/class_jiexuci"
+                    android:visible="false"
+                    android:title="接续词" />
+                <item
+                    android:id="@+id/class_tanci"
+                    android:title="叹词" />
+                <item
+                    android:id="@+id/class_zhudongci"
+                    android:visible="false"
+                    android:title="助动词" />
+                <item
+                    android:id="@+id/class_zhuci"
+                    android:visible="false"
+                    android:title="助词" />
+                <item
+                    android:id="@+id/class_zhuanyou"
+                    android:title="专有名词" />
+                <item
+                    android:id="@+id/class_duanyu"
+                    android:title="短语" />
+                <item
+                    android:id="@+id/class_vt"
+                    android:title="他动词" />
+                <item
+                    android:id="@+id/class_vi"
+                    android:title="自动词" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/item_quick"
+        android:visible="false"
+        android:title="@string/play_quick"
+        android:icon="@drawable/quick"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/item_save"
+        android:visible="false"
+        android:title="@string/play_save"
+        android:icon="@drawable/save"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/help"
+        android:title="Help"
+        app:showAsAction="never" />
+</menu>
