@@ -12,13 +12,13 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 public abstract class DialogView {
-    private static InputMethodManager manager        = null;
-    public         Dialog             dialog;
-    private final Window             window;
-    private final Context            context;
-    private final int                layoutResID;
-    private final DialogManager      dialog_manager;
-    private        DisplayMetrics     dm             = null;
+    private static InputMethodManager manager = null;
+    public Dialog dialog;
+    private final Window window;
+    private final Context context;
+    private final int layoutResID;
+    private final DialogManager dialog_manager;
+    private DisplayMetrics dm = null;
 
     public DialogView(Context context, int layoutResID) {
         dialog_manager = DialogManager.getInstance();
@@ -130,6 +130,7 @@ public abstract class DialogView {
         if (manager == null) {
             manager = ((InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE));
         }
-        if (dialog.getCurrentFocus() != null) manager.hideSoftInputFromWindow(dialog.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        if (dialog.getCurrentFocus() != null)
+            manager.hideSoftInputFromWindow(dialog.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 }

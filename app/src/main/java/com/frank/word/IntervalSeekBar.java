@@ -1,6 +1,7 @@
 package com.frank.word;
 
 //https://blog.csdn.net/u012127961/article/details/121688095
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;

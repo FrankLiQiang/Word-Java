@@ -20,19 +20,22 @@ public class MusicService extends Service {
     private Handler thisHandler;
     private Timer timer;
     private TimerTask task;
-    public MusicService() {}
+
+    public MusicService() {
+    }
+
     @Override
-    public  IBinder onBind(Intent intent){
+    public IBinder onBind(Intent intent) {
         return new MusicControl();
     }
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         player = new MediaPlayer();
     }
 
-    public void addTimer(){
+    public void addTimer() {
         timer = new Timer();
         task = new TimerTask() {
             @Override
@@ -41,7 +44,7 @@ public class MusicService extends Service {
                     if (player != null && player.isPlaying()) {
                         thisHandler.sendEmptyMessage(0);
                     }
-                }catch (Exception e) {
+                } catch (Exception e) {
                     //TODO
                 }
             }
@@ -49,11 +52,11 @@ public class MusicService extends Service {
         timer.schedule(task, 0, 100);
     }
 
-    class MusicControl extends Binder{
+    class MusicControl extends Binder {
 
-        public void play(Handler handler, Uri uri, boolean isMute){
-            try{
-                if(player != null){
+        public void play(Handler handler, Uri uri, boolean isMute) {
+            try {
+                if (player != null) {
                     player.setOnPreparedListener(null);
                     player.stop();
                     player.reset();
@@ -88,41 +91,49 @@ public class MusicService extends Service {
                 });
                 player.start();
 
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        public void continuePlay(){
+
+        public void continuePlay() {
             player.start();
         }
-        public void pausePlay(){
+
+        public void pausePlay() {
             player.pause();
         }
-        public void seekTo(int Start){
+
+        public void seekTo(int Start) {
             player.seekTo(Start);
         }
-        public void speedTo(float progress){
+
+        public void speedTo(float progress) {
             PlaybackParams params = player.getPlaybackParams();
             params.setSpeed(progress);
             player.setPlaybackParams(params);
         }
+
         public int getCurrentPosition() {
             return player.getCurrentPosition();
         }
-        public void mute(){
+
+        public void mute() {
             player.setVolume(0f, 0f);
         }
-        public void Volume(){
+
+        public void Volume() {
             player.setVolume(1, 1);
         }
     }
+
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
-        if(player==null) return;
-        if(player.isPlaying()) player.stop();
+        if (player == null) return;
+        if (player.isPlaying()) player.stop();
         player.reset();
         player.release();
-        player=null;
+        player = null;
     }
 }

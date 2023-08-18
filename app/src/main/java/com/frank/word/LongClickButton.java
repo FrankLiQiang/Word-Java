@@ -25,18 +25,22 @@ public class LongClickButton extends RelativeLayout {
      */
     private long intervalTime;
     private MyHandler handler;
+
     public LongClickButton(Context context) {
         super(context);
         init();
     }
+
     public LongClickButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
+
     public LongClickButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }
+
     /**
      * 初始化监听
      */
@@ -50,11 +54,13 @@ public class LongClickButton extends RelativeLayout {
             }
         });
     }
+
     /**
      * 长按时，该线程将会启动
      */
     private class LongClickThread implements Runnable {
         private int num;
+
         @Override
         public void run() {
             while (LongClickButton.this.isPressed()) {
@@ -66,14 +72,17 @@ public class LongClickButton extends RelativeLayout {
             }
         }
     }
+
     /**
      * 通过handler，使监听的事件响应在主线程中进行
      */
     private static class MyHandler extends Handler {
         private WeakReference<LongClickButton> ref;
+
         MyHandler(LongClickButton button) {
             ref = new WeakReference<>(button);
         }
+
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -83,16 +92,18 @@ public class LongClickButton extends RelativeLayout {
             }
         }
     }
+
     /**
      * 设置长按连续响应的监听和间隔时间，长按时将会多次调用该接口中的方法直到长按结束
      *
-     * @param listener   监听
+     * @param listener     监听
      * @param intervalTime 间隔时间（ms）
      */
     public void setLongClickRepeatListener(LongClickRepeatListener listener, long intervalTime) {
         this.repeatListener = listener;
         this.intervalTime = intervalTime;
     }
+
     /**
      * 设置长按连续响应的监听（使用默认间隔时间100ms），长按时将会多次调用该接口中的方法直到长按结束
      *
@@ -101,6 +112,7 @@ public class LongClickButton extends RelativeLayout {
     public void setLongClickRepeatListener(LongClickRepeatListener listener) {
         setLongClickRepeatListener(listener, 100);
     }
+
     public interface LongClickRepeatListener {
         void repeatAction();
     }

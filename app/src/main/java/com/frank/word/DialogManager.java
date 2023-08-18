@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DialogManager {
     private static final ArrayList<DialogView> dialog_array = new ArrayList<>();
-    private static       DialogManager         dialog_manager;
+    private static DialogManager dialog_manager;
 
     private DialogManager() {
     }

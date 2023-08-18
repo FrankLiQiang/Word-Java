@@ -8,7 +8,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class ChooseDialog extends DialogView implements OnClickListener {
-    private final Context  _context;
+    private final Context _context;
     private TextView tv_lesson_from;
     private TextView tv_lesson_to;
     private int _from;

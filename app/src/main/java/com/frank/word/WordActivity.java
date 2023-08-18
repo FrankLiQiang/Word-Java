@@ -54,7 +54,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class WordActivity extends AppCompatActivity implements View.OnClickListener{
+public class WordActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static MusicService.MusicControl musicControl;
     private final static int SHOW_RANGE_NORMAL = 0;
@@ -130,9 +130,9 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
 
     private ProgressBar progressBar;
     private SeekBar _seekBar;
-    private final int[] numberArray =new int[22];
-    private final int[] ClassColor =new int[16];
-    private final MenuItem[] menuWordClass =new MenuItem[16];
+    private final int[] numberArray = new int[22];
+    private final int[] ClassColor = new int[16];
+    private final MenuItem[] menuWordClass = new MenuItem[16];
     private int[] wordIndexArray;
     private final ArrayList<String> list_native = new ArrayList<>();
     private final ArrayList<String> list_foreign = new ArrayList<>();
@@ -148,25 +148,26 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
     private File lrcFile;
     private String[] wClass = new String[]{
             "名词"
-            ,"代词"
-            ,"数词"
-            ,"动1"
-            ,"动2"
-            ,"动3"
-            ,"形1"
-            ,"形2"
-            ,"连体词"
-            ,"副词"
-            ,"接续词"
-            ,"叹词"
-            ,"助动词"
-            ,"助词"
-            ,"专有名词"
-            ,"动词"
-            ,""
+            , "代词"
+            , "数词"
+            , "动1"
+            , "动2"
+            , "动3"
+            , "形1"
+            , "形2"
+            , "连体词"
+            , "副词"
+            , "接续词"
+            , "叹词"
+            , "助动词"
+            , "助词"
+            , "专有名词"
+            , "动词"
+            , ""
     };
 
     private String error = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -188,7 +189,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             actionBar.show();
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-        _seekBar.setProgress((int)lrcTV.getTextSize() / 2);
+        _seekBar.setProgress((int) lrcTV.getTextSize() / 2);
 
         _seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -238,12 +239,12 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         menuWordClass[7] = menu.findItem(R.id.class_adj_2);
         menuWordClass[8] = menu.findItem(R.id.class_liantici);
         menuWordClass[9] = menu.findItem(R.id.class_fuci);
-        menuWordClass[10] =menu.findItem( R.id.class_jiexuci);
-        menuWordClass[11] =menu.findItem( R.id.class_tanci);
-        menuWordClass[12] =menu.findItem( R.id.class_zhudongci);
-        menuWordClass[13] =menu.findItem( R.id.class_zhuci);
-        menuWordClass[14] =menu.findItem( R.id.class_zhuanyou);
-        menuWordClass[15] =menu.findItem( R.id.class_duanyu);
+        menuWordClass[10] = menu.findItem(R.id.class_jiexuci);
+        menuWordClass[11] = menu.findItem(R.id.class_tanci);
+        menuWordClass[12] = menu.findItem(R.id.class_zhudongci);
+        menuWordClass[13] = menu.findItem(R.id.class_zhuci);
+        menuWordClass[14] = menu.findItem(R.id.class_zhuanyou);
+        menuWordClass[15] = menu.findItem(R.id.class_duanyu);
 
         numberArray[0] = R.id.single_menu_00;
         numberArray[1] = R.id.single_menu_01;
@@ -292,10 +293,10 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         String str = _new_lrc.getText().toString();
         str = str.replace("　", " ");
         if (str.length() < 50) {
-            return"请输入单词及解释。";
+            return "请输入单词及解释。";
         }
         if (!str.endsWith("完了\n") && !str.endsWith("结束\n")) {
-            return"请输入[完了]解释标志。";
+            return "请输入[完了]解释标志。";
         }
         String[] strArray = str.split("\n");
         list_foreign.clear();
@@ -304,8 +305,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         list_sentence1.clear();
         list_sentence2.clear();
         int len = 0;
-        for (int i = 0; i < strArray.length; i++ )
-        {
+        for (int i = 0; i < strArray.length; i++) {
             String[] tmp = strArray[i].split(" ");
             len += strArray[i].length() + 1;
             if (tmp.length == 1) {
@@ -381,21 +381,21 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             _info.setEnabled(!isReadOnly);
             _info.setText("");
         } else if (id == R.id.background) {
-                isBlack = !isBlack;
-                item.setChecked(isBlack);
-                if (findViewById(R.id.iv_all).getVisibility() == View.VISIBLE) {
-                    if (isBlack) {
-                        findViewById(R.id.iv_all).setBackgroundColor(getResources().getColor(R.color.black));
-                    } else {
-                        findViewById(R.id.iv_all).setBackgroundDrawable(getResources().getDrawable(R.drawable.background_main));
-                    }
+            isBlack = !isBlack;
+            item.setChecked(isBlack);
+            if (findViewById(R.id.iv_all).getVisibility() == View.VISIBLE) {
+                if (isBlack) {
+                    findViewById(R.id.iv_all).setBackgroundColor(getResources().getColor(R.color.black));
                 } else {
-                    if (isBlack) {
-                        findViewById(R.id.all_bg).setBackgroundColor(getResources().getColor(R.color.black));
-                    } else {
-                        findViewById(R.id.all_bg).setBackgroundDrawable(getResources().getDrawable(R.drawable.background_main));
-                    }
+                    findViewById(R.id.iv_all).setBackgroundDrawable(getResources().getDrawable(R.drawable.background_main));
                 }
+            } else {
+                if (isBlack) {
+                    findViewById(R.id.all_bg).setBackgroundColor(getResources().getColor(R.color.black));
+                } else {
+                    findViewById(R.id.all_bg).setBackgroundDrawable(getResources().getDrawable(R.drawable.background_main));
+                }
+            }
         } else if (id == R.id.folder) {
             Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
             launcherFolder.launch(intent);
@@ -592,8 +592,8 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             }
         } else if (id == R.id.help) {
             showHelp();
-        } else  {
-            for (int i = 0; i < 6; i++ ) {
+        } else {
+            for (int i = 0; i < 6; i++) {
                 if (id == numberArray[i]) {
                     loopNumber = i;
                     item.setChecked(true);
@@ -607,7 +607,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     return super.onOptionsItemSelected(item);
                 }
             }
-            for (int i = 6; i < 22; i++ ) {
+            for (int i = 6; i < 22; i++) {
                 if (id == numberArray[i]) {
                     item.setChecked(true);
                     item.setCheckable(true);
@@ -658,25 +658,25 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.lrc){
+        if (v.getId() == R.id.lrc) {
             onOptionsItemSelected(pauseItem);
             _info.setTextSize(TypedValue.COMPLEX_UNIT_PX, 80);
             _info.setText("");
-        } else if (v.getId() == R.id.left){
+        } else if (v.getId() == R.id.left) {
             if (iStart > 100) {
                 DecimalFormat decimalFormat = new DecimalFormat("0000000");
                 iStart -= 100;
                 iListTime.set(wordIndexArray[wordIndex], iStart);
                 listTime.set(wordIndexArray[wordIndex], decimalFormat.format(iStart));
             }
-        } else if (v.getId() == R.id.right){
-            if (iStart < duration - 200)  {
+        } else if (v.getId() == R.id.right) {
+            if (iStart < duration - 200) {
                 DecimalFormat decimalFormat = new DecimalFormat("0000000");
                 iStart += 100;
                 iListTime.set(wordIndexArray[wordIndex], iStart);
                 listTime.set(wordIndexArray[wordIndex], decimalFormat.format(iStart));
             }
-        } else if (v.getId() == R.id.favorite){
+        } else if (v.getId() == R.id.favorite) {
             if (iFavorite.get(wordIndexArray[wordIndex]) == SHOW_FAVORITE) {
                 return;
             }
@@ -692,7 +692,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             iFavorite.set(wordIndexArray[wordIndex], SHOW_FAVORITE);
             lrcTV.setBackgroundColor(getResources().getColor(R.color.purple_700));
             saveFile("");
-        } else if (v.getId() == R.id.show_choose){
+        } else if (v.getId() == R.id.show_choose) {
             if (iFavorite.get(wordIndexArray[wordIndex]) == SHOW_DEL) {
                 return;
             }
@@ -712,7 +712,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 showNext();
             }
-        } else if (v.getId() == R.id.show_all){
+        } else if (v.getId() == R.id.show_all) {
             if (iFavorite.get(wordIndexArray[wordIndex]) == SHOW_RANGE_NORMAL) {
                 return;
             }
@@ -738,7 +738,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showWord() {
-        if (showCurrentWord() ) {
+        if (showCurrentWord()) {
             showSeekTo();
         }
     }
@@ -768,7 +768,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         lrcTV.setText(str);
         sentence1.setVisibility(View.GONE);
         sentence2.setVisibility(View.GONE);
-        if(wordIndexArray[wordIndex] < list_sentence1.size()) {
+        if (wordIndexArray[wordIndex] < list_sentence1.size()) {
             sentence1.setVisibility(View.VISIBLE);
             sentence2.setVisibility(View.VISIBLE);
             strSentence1 = list_sentence1.get(wordIndexArray[wordIndex]);
@@ -778,8 +778,8 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         sentence2.setText(strSentence2);
         if (iFavorite.get(wordIndexArray[wordIndex]) == SHOW_FAVORITE) {
             lrcTV.setBackgroundColor(getResources().getColor(R.color.purple_700));
-        }else if (iFavorite.get(wordIndexArray[wordIndex]) == SHOW_DEL) {
-                lrcTV.setBackgroundColor(getResources().getColor(R.color.gray));
+        } else if (iFavorite.get(wordIndexArray[wordIndex]) == SHOW_DEL) {
+            lrcTV.setBackgroundColor(getResources().getColor(R.color.gray));
         } else {
             lrcTV.setBackgroundColor(getResources().getColor(android.R.color.transparent));
         }
@@ -818,7 +818,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                 allIndex = 0;
                 wordIndex = 0;
             }
-        }else if (iShowRange == SHOW_RANGE_CLASS) {
+        } else if (iShowRange == SHOW_RANGE_CLASS) {
             all_num = iListTime.size() - 1;
             if (wordIndex == -1) {
                 for (int i = iListTime.size() - 2; i >= 0; i--) {
@@ -886,7 +886,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                 }
-            }else {
+            } else {
                 for (int i = 0; i < iListTime.size(); i++) {
                     if (iFavorite.get(wordIndexArray[i]) == SHOW_RANGE_NORMAL
                             || iFavorite.get(wordIndexArray[i]) == SHOW_FAVORITE) {
@@ -903,7 +903,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                         break;
                     }
                 }
-            }else {
+            } else {
                 for (int i = 0; i < iListTime.size(); i++) {
                     if (iFavorite.get(wordIndexArray[i]) == iShowRange) {
                         wordIndex = i;
@@ -1005,19 +1005,19 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         if (iShowRange == SHOW_RANGE_NORMAL) {
             show_index = normalIndex;
             show_num = normal_num;
-        }else if (iShowRange == SHOW_FAVORITE) {
+        } else if (iShowRange == SHOW_FAVORITE) {
             show_index = favoriteIndex;
             show_num = favorite_num;
-        }else if (iShowRange == SHOW_DEL) {
+        } else if (iShowRange == SHOW_DEL) {
             show_index = delIndex;
             show_num = removed_num;
-        }else if (iShowRange == SHOW_CHOSEN) {
+        } else if (iShowRange == SHOW_CHOSEN) {
             show_index = chosenIndex;
             show_num = chosen_num;
-        }else if (iShowRange == SHOW_RANGE_ALL) {
+        } else if (iShowRange == SHOW_RANGE_ALL) {
             show_index = allIndex;
             show_num = all_num;
-        }else if (iShowRange == SHOW_RANGE_CLASS) {
+        } else if (iShowRange == SHOW_RANGE_CLASS) {
             show_index = wordIndexArray[wordIndex];
             show_num = all_num;
         }
@@ -1053,7 +1053,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         }
         saveItem.setVisible(true);
         findViewById(R.id.sv_new_lrc).setVisibility(View.VISIBLE);
-        ((TextView)findViewById(R.id.new_lrc)).setText(str);
+        ((TextView) findViewById(R.id.new_lrc)).setText(str);
         iStart = 0;
         musicControl.play(handler, _uri, isMute);
         musicControl.speedTo(1.0f);
@@ -1118,15 +1118,14 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                         String a = e.toString();
                         a += "";
                     } finally {
-                        if(writer!=null)
-                        {
+                        if (writer != null) {
                             try {
                                 writer.close();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         }
-                        if(out!=null){
+                        if (out != null) {
                             try {
                                 out.close();
                             } catch (IOException e) {
@@ -1150,20 +1149,17 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public String searchWordFromTxtFile(File file, String str)
-    {
+    public String searchWordFromTxtFile(File file, String str) {
         StringBuilder ret = new StringBuilder();
         String tmp = "";
         InputStreamReader read = null;
         BufferedReader bufferedReader = null;
-        try
-        {
+        try {
             read = new InputStreamReader(new FileInputStream(file));
             bufferedReader = new BufferedReader(read);
             String lineTxt;
             int num = 0;
-            while ((lineTxt = bufferedReader.readLine()) != null)
-            {
+            while ((lineTxt = bufferedReader.readLine()) != null) {
                 num++;
                 if (lineTxt.contains(str)) {
                     tmp = "  【" + num + "】" + lineTxt.substring(10);
@@ -1174,15 +1170,11 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             bufferedReader.close();
             read.close();
             return ret.toString();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             try {
                 bufferedReader.close();
                 read.close();
-            }
-            catch (Exception e1)
-            {
+            } catch (Exception e1) {
                 //TODO
             }
             e.printStackTrace();
@@ -1190,27 +1182,24 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         return ret.toString();
     }
 
-    public String getNewStringFromFile(File file)
-    {
+    public String getNewStringFromFile(File file) {
         StringBuilder ret = new StringBuilder();
         InputStreamReader read = null;
         BufferedReader bufferedReader = null;
-        try
-        {
+        try {
             read = new InputStreamReader(new FileInputStream(file));
             bufferedReader = new BufferedReader(read);
             String lineTxt;
-            while ((lineTxt = bufferedReader.readLine()) != null)
-            {
+            while ((lineTxt = bufferedReader.readLine()) != null) {
                 ret.append(lineTxt.substring(0, 8));
 //                ret.append("00");
 //                ret.append(lineTxt.substring(8));
 
                 if (lineTxt.startsWith("08", 8)) {
                     ret.append("09");
-                }else if (lineTxt.startsWith("09", 8)) {
+                } else if (lineTxt.startsWith("09", 8)) {
                     ret.append("08");
-                }else{
+                } else {
                     ret.append(lineTxt.substring(8, 10));
                 }
                 ret.append(lineTxt.substring(10));
@@ -1220,15 +1209,11 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             bufferedReader.close();
             read.close();
             return ret.toString();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             try {
                 bufferedReader.close();
                 read.close();
-            }
-            catch (Exception e1)
-            {
+            } catch (Exception e1) {
                 //TODO
             }
             e.printStackTrace();
@@ -1278,9 +1263,9 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         _new_lrc.setText("");
 
         String pathAndName = _uri.getPath();
-        int start=pathAndName.lastIndexOf("/");
-        int end=pathAndName.lastIndexOf(".");
-        if(start!=-1 && end!=-1){
+        int start = pathAndName.lastIndexOf("/");
+        int end = pathAndName.lastIndexOf(".");
+        if (start != -1 && end != -1) {
             fileName = pathAndName.substring(start + 1, end);
             setTitle(fileName);
             String tmp = pathAndName.substring(0, start);
@@ -1319,7 +1304,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                 musicControl.play(handler, _uri, isMute);
                 musicControl.speedTo(1.0f);
                 musicControl.seekTo(iStart);
-            }else{
+            } else {
                 editWords("");
             }
         } catch (Exception e) {
@@ -1371,30 +1356,30 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     wordIndex--;
                 }
             } else if (iShowRange == SHOW_CHOSEN) {
-                    boolean isFound = false;
-                    for (int i = wordIndex - 1; i >= 0; i--) {
-                        if (iFavorite.get(wordIndexArray[i]) == SHOW_RANGE_NORMAL
-                                || iFavorite.get(wordIndexArray[i]) == SHOW_FAVORITE) {
-                            wordIndex = i;
-                            chosenIndex--;
-                            isFound = true;
-                            break;
-                        }
+                boolean isFound = false;
+                for (int i = wordIndex - 1; i >= 0; i--) {
+                    if (iFavorite.get(wordIndexArray[i]) == SHOW_RANGE_NORMAL
+                            || iFavorite.get(wordIndexArray[i]) == SHOW_FAVORITE) {
+                        wordIndex = i;
+                        chosenIndex--;
+                        isFound = true;
+                        break;
                     }
-                    if (!isFound) {
-                        if (isPlayFolder) {
-                            showPrevLesson();
-                        } else {
-                            for (int i = iFavorite.size() - offset; i > wordIndex; i--) {
-                                if (iFavorite.get(wordIndexArray[i]) == SHOW_RANGE_NORMAL
-                                        || iFavorite.get(wordIndexArray[i]) == SHOW_FAVORITE) {
-                                    wordIndex = i;
-                                    chosenIndex = chosen_num - 1;
-                                    break;
-                                }
+                }
+                if (!isFound) {
+                    if (isPlayFolder) {
+                        showPrevLesson();
+                    } else {
+                        for (int i = iFavorite.size() - offset; i > wordIndex; i--) {
+                            if (iFavorite.get(wordIndexArray[i]) == SHOW_RANGE_NORMAL
+                                    || iFavorite.get(wordIndexArray[i]) == SHOW_FAVORITE) {
+                                wordIndex = i;
+                                chosenIndex = chosen_num - 1;
+                                break;
                             }
                         }
                     }
+                }
             } else {
                 boolean isFound = false;
                 for (int i = wordIndex - 1; i >= 0; i--) {
@@ -1402,9 +1387,9 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                         wordIndex = i;
                         if (iShowRange == SHOW_FAVORITE) {
                             favoriteIndex--;
-                        }else if (iShowRange == SHOW_DEL) {
+                        } else if (iShowRange == SHOW_DEL) {
                             delIndex--;
-                        }else if (iShowRange == SHOW_RANGE_NORMAL) {
+                        } else if (iShowRange == SHOW_RANGE_NORMAL) {
                             normalIndex--;
                         }
                         isFound = true;
@@ -1420,9 +1405,9 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                                 wordIndex = i;
                                 if (iShowRange == SHOW_FAVORITE) {
                                     favoriteIndex = favorite_num - 1;
-                                }else if (iShowRange == SHOW_DEL) {
+                                } else if (iShowRange == SHOW_DEL) {
                                     delIndex = removed_num - 1;
-                                }else if (iShowRange == SHOW_RANGE_NORMAL) {
+                                } else if (iShowRange == SHOW_RANGE_NORMAL) {
                                     normalIndex = normal_num - 1;
                                 }
                                 break;
@@ -1617,9 +1602,9 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                         wordIndex = i;
                         if (iShowRange == SHOW_FAVORITE) {
                             favoriteIndex++;
-                        }else if (iShowRange == SHOW_DEL) {
+                        } else if (iShowRange == SHOW_DEL) {
                             delIndex++;
-                        }else if (iShowRange == SHOW_RANGE_NORMAL) {
+                        } else if (iShowRange == SHOW_RANGE_NORMAL) {
                             normalIndex++;
                         }
                         isFound = true;
@@ -1636,9 +1621,9 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                                 wordIndex = i;
                                 if (iShowRange == SHOW_FAVORITE) {
                                     favoriteIndex = 0;
-                                }else if (iShowRange == SHOW_DEL) {
+                                } else if (iShowRange == SHOW_DEL) {
                                     delIndex = 0;
-                                }else if (iShowRange == SHOW_RANGE_NORMAL) {
+                                } else if (iShowRange == SHOW_RANGE_NORMAL) {
                                     normalIndex = 0;
                                 }
                                 break;
@@ -1747,7 +1732,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         Arrays.sort(files, cmp);
         PopupMenu popupMenu = new PopupMenu(WordActivity.this, findViewById(R.id.progressBar));
         Menu thisPop = popupMenu.getMenu();
-        for(int i = 0; i < files.length; i++) {
+        for (int i = 0; i < files.length; i++) {
             thisPop.add(0, i, i, files[i].getName());
         }
 
@@ -1784,10 +1769,10 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         buttonNext.setLongClickRepeatListener(this::showNext, 50);
         buttonNext.setOnClickListener(v -> showNext());
 
-        Intent intent2 = new Intent(this,MusicService.class);
-        conn= new MyServiceConn();
-        bindService(intent2,conn,BIND_AUTO_CREATE);
-        launcher = registerForActivityResult( new ActivityResultContracts.StartActivityForResult(), result -> {
+        Intent intent2 = new Intent(this, MusicService.class);
+        conn = new MyServiceConn();
+        bindService(intent2, conn, BIND_AUTO_CREATE);
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             Intent data = result.getData();
 
             if (data == null) {
@@ -1798,7 +1783,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             isPlayFolder = false;
             reset();
         });
-        launcherFolder = registerForActivityResult( new ActivityResultContracts.StartActivityForResult(), result -> {
+        launcherFolder = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             Intent data = result.getData();
 
             if (data == null) {
@@ -1807,7 +1792,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
 
             _uri = data.getData();
 
-            DocumentFile  documentFile = DocumentFile.fromTreeUri(this, _uri);
+            DocumentFile documentFile = DocumentFile.fromTreeUri(this, _uri);
             files = documentFile.listFiles();
             if (files.length == 0) {
                 return;
@@ -1834,7 +1819,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().endsWith("*")) {
+                if (s.toString().endsWith("*")) {
                     String str = s.toString().substring(0, s.toString().length() - 1);
                     String found = searchWord(str);
                     _dict.setTextSize(TypedValue.COMPLEX_UNIT_PX, 60);
@@ -1843,9 +1828,9 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     _dict.setFocusableInTouchMode(true);
                     _dict.requestFocus();
                     _dict.setSelection(_dict.getText().toString().length());
-                } else if(s.toString().endsWith("\n")) {
+                } else if (s.toString().endsWith("\n")) {
                     _dict.setText("");
-                } else if(s.toString().endsWith(" ")) {
+                } else if (s.toString().endsWith(" ")) {
                     _dict.setText("");
                     //add00();
                 }
@@ -1863,7 +1848,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().endsWith("\n")) {
+                if (s.toString().endsWith("\n")) {
                     if (s.toString().equals("\n")) {
                         _info.setText("");
                         showNext();
@@ -1871,8 +1856,8 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     String str = s.toString().substring(0, s.toString().length() - 1);
                     if (!str.equals(list_foreign.get(wordIndexArray[wordIndex]))
-                    && !str.equals(list_pronunciation.get(wordIndexArray[wordIndex]))
-                    && !list_native.get(wordIndexArray[wordIndex]).contains(str)){
+                            && !str.equals(list_pronunciation.get(wordIndexArray[wordIndex]))
+                            && !list_native.get(wordIndexArray[wordIndex]).contains(str)) {
                         _info.setText(list_foreign.get(wordIndexArray[wordIndex])
                                 + "\n" + list_pronunciation.get(wordIndexArray[wordIndex])
                                 + "\n" + list_native.get(wordIndexArray[wordIndex]));
@@ -1885,14 +1870,14 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     _info.setText("");
 
-                } else if(s.toString().endsWith("＜") || s.toString().endsWith("<") ) {
+                } else if (s.toString().endsWith("＜") || s.toString().endsWith("<")) {
                     showPrev();
                     _info.setText("");
-                } else if(s.toString().endsWith(" ")) {
+                } else if (s.toString().endsWith(" ")) {
                     _info.setText("");
-                } else if(s.toString().endsWith("?")) {
+                } else if (s.toString().endsWith("?")) {
                     showHelp();
-                } else if(s.toString().endsWith("+")) {
+                } else if (s.toString().endsWith("+")) {
                     if (!isAdjust || sortType != 0 || iShowRange != SHOW_RANGE_ALL || wordIndex == listTime.size() - 1) {
                         Toast.makeText(WordActivity.this, "要：调时，顺序，全部播放，才可以。", Toast.LENGTH_LONG).show();
                         return;
@@ -1927,7 +1912,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     } else {
                         Toast.makeText(WordActivity.this, "格式错误。", Toast.LENGTH_LONG).show();
                     }
-                } else if(s.toString().endsWith("-")) {
+                } else if (s.toString().endsWith("-")) {
                     if (!isAdjust || sortType != 0 || iShowRange != SHOW_RANGE_ALL || wordIndex == listTime.size() - 1) {
                         Toast.makeText(WordActivity.this, "要：调整时刻模式，顺序，全部播放，才可以。", Toast.LENGTH_LONG).show();
                         return;
@@ -1942,7 +1927,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     _info.setText("");
                     saveFile("");
                     showNext();
-                }else if (s.toString().equals("!")) {
+                } else if (s.toString().equals("!")) {
                     if (iFavorite.get(wordIndexArray[wordIndex]) == 3) {
                         _info.setText("");
                         return;
@@ -1966,7 +1951,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     lrcTV.setBackgroundColor(getResources().getColor(R.color.transparent));
                     saveFile("");
                     _info.setText("");
-                }else if(s.toString().endsWith("#")) {
+                } else if (s.toString().endsWith("#")) {
                     String[] strArray = s.toString().substring(0, s.toString().length() - 1).split("\n");
                     if (strArray.length == 3) {
                         if (strArray[0].contains(" ") || strArray[1].contains(" ") || strArray[2].contains(" ")) {
@@ -1993,7 +1978,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     } else {
                         Toast.makeText(WordActivity.this, "格式错误。", Toast.LENGTH_LONG).show();
                     }
-                }else if(s.toString().endsWith("&")) {
+                } else if (s.toString().endsWith("&")) {
                     if (iShowRange != SHOW_RANGE_ALL) {
                         _info.setText("");
                         Toast.makeText(WordActivity.this, "请选择显示所有单词模式。", Toast.LENGTH_LONG).show();
@@ -2032,7 +2017,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                         allIndex = foundIndex;
                         showWord();
                     }
-                }else if(s.toString().endsWith("*")) {
+                } else if (s.toString().endsWith("*")) {
                     String str = s.toString().substring(0, s.toString().length() - 1);
                     String found = searchWord(str);
                     _info.setTextSize(TypedValue.COMPLEX_UNIT_PX, 60);
@@ -2041,7 +2026,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     _info.setFocusableInTouchMode(true);
                     _info.requestFocus();
                     _info.setSelection(_info.getText().toString().length());
-                }else if(s.toString().endsWith("@")) {
+                } else if (s.toString().endsWith("@")) {
                     if (iShowRange != SHOW_RANGE_ALL) {
                         _info.setText("");
                         Toast.makeText(WordActivity.this, "请选择显示所有单词模式。", Toast.LENGTH_LONG).show();
@@ -2107,10 +2092,10 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @SuppressLint("HandlerLeak")
-    public Handler handler=new Handler(){
+    public Handler handler = new Handler() {
         @Override
-        public void handleMessage(Message msg){
-            Bundle bundle=msg.getData();
+        public void handleMessage(Message msg) {
+            Bundle bundle = msg.getData();
             if (duration == 0 && bundle.getInt("duration") > 0) {
                 duration = bundle.getInt("duration");
             }
@@ -2150,39 +2135,37 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
 
     static class MyServiceConn implements ServiceConnection {
         @Override
-        public void onServiceConnected(ComponentName name, IBinder service){
-            musicControl=(MusicService.MusicControl) service;
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            musicControl = (MusicService.MusicControl) service;
         }
+
         @Override
-        public void onServiceDisconnected(ComponentName name){
+        public void onServiceDisconnected(ComponentName name) {
 
         }
     }
 
-    public boolean isNumeric(String str){
+    public boolean isNumeric(String str) {
         Pattern pattern = Pattern.compile("[0-9]*");
         Matcher isNum = pattern.matcher(str);
-        if( !isNum.matches() ){
+        if (!isNum.matches()) {
             return false;
         }
         return true;
     }
 
-    public boolean readTxtFileIntoStringArrList(File file, boolean isMakeLRC)
-    {
+    public boolean readTxtFileIntoStringArrList(File file, boolean isMakeLRC) {
         InputStreamReader read = null;
         BufferedReader bufferedReader = null;
-        try
-        {
+        try {
             read = new InputStreamReader(new FileInputStream(file));
             bufferedReader = new BufferedReader(read);
             String lineTxt;
             String[] strArray;
             isLRC_Time_OK = true;
             isLRC_Format_OK = true;
-            while ((lineTxt = bufferedReader.readLine()) != null && !lineTxt.isEmpty())
-            {
-                if (lineTxt.length() < 10 || isNumeric(lineTxt.substring(0,10)) == false) {
+            while ((lineTxt = bufferedReader.readLine()) != null && !lineTxt.isEmpty()) {
+                if (lineTxt.length() < 10 || isNumeric(lineTxt.substring(0, 10)) == false) {
                     isLRC_Time_OK = false;
                 }
                 if (isMakeLRC) {
@@ -2192,18 +2175,18 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
                     listTime.add("");
                     strArray = lineTxt.split(" ");
                 } else {
-                    if (lineTxt.length() < 10 || isNumeric(lineTxt.substring(0,10)) == false) {
+                    if (lineTxt.length() < 10 || isNumeric(lineTxt.substring(0, 10)) == false) {
                         isLRC_Time_OK = false;
                         bufferedReader.close();
                         read.close();
                         return false;
                     }
-                    String flag = lineTxt.substring(0,1);
+                    String flag = lineTxt.substring(0, 1);
                     iFavorite.add(Integer.parseInt(flag));
-                    String time = lineTxt.substring(1,8);
+                    String time = lineTxt.substring(1, 8);
                     iListTime.add(Integer.parseInt(time));
                     listTime.add(time);
-                    String wCls = lineTxt.substring(8,10);
+                    String wCls = lineTxt.substring(8, 10);
                     iWordClass.add(Integer.parseInt(wCls));
                     strArray = lineTxt.substring(10).split(" ");
                 }
@@ -2247,18 +2230,14 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             bufferedReader.close();
             read.close();
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             isLRC_Time_OK = false;
             isLRC_Format_OK = false;
             error = e.toString();
             try {
                 bufferedReader.close();
                 read.close();
-            }
-            catch (Exception e1)
-            {
+            } catch (Exception e1) {
                 //TODO
             }
             e.printStackTrace();
@@ -2270,13 +2249,11 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         InputStreamReader read;
         BufferedReader bufferedReader;
         StringBuilder stringBuffer = new StringBuilder();
-        try
-        {
+        try {
             read = new InputStreamReader(new FileInputStream(file));
             bufferedReader = new BufferedReader(read);
             String lineTxt;
-            while ((lineTxt = bufferedReader.readLine()) != null)
-            {
+            while ((lineTxt = bufferedReader.readLine()) != null) {
                 if (isLRC_Time_OK) {
                     stringBuffer.append(lineTxt.substring(10));
                 } else {
@@ -2287,21 +2264,17 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             bufferedReader.close();
             read.close();
             return stringBuffer.toString();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.toString();
         }
         return "";
     }
 
-    public String readTxtFile(File file)
-    {
+    public String readTxtFile(File file) {
         InputStreamReader read;
         BufferedReader bufferedReader;
         StringBuilder stringBuffer = new StringBuilder();
-        try
-        {
+        try {
             list_foreign.clear();
             list_pronunciation.clear();
             list_native.clear();
@@ -2314,14 +2287,13 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             read = new InputStreamReader(new FileInputStream(file));
             bufferedReader = new BufferedReader(read);
             String lineTxt;
-            while ((lineTxt = bufferedReader.readLine()) != null)
-            {
-                String flag = lineTxt.substring(0,1);
+            while ((lineTxt = bufferedReader.readLine()) != null) {
+                String flag = lineTxt.substring(0, 1);
                 iFavorite.add(Integer.parseInt(flag));
-                String time = lineTxt.substring(1,8);
+                String time = lineTxt.substring(1, 8);
                 iListTime.add(Integer.parseInt(time));
                 listTime.add(time);
-                String wCls = lineTxt.substring(8,10);
+                String wCls = lineTxt.substring(8, 10);
                 iWordClass.add(Integer.parseInt(wCls));
 
                 stringBuffer.append(lineTxt.substring(10));
@@ -2330,9 +2302,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
             bufferedReader.close();
             read.close();
             return stringBuffer.toString();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.toString();
         }
         return "";
@@ -2363,14 +2333,13 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (c == 8) {
             c = 9;
-        }else if (c == 9) {
+        } else if (c == 9) {
             c = 8;
         }
         return c;
     }
 
-    public void saveFile(String msg)
-    {
+    public void saveFile(String msg) {
         StringBuilder stringBuffer = null;
         DecimalFormat decimalFormat = new DecimalFormat("00");
         if (isLRC_Time_OK) {
@@ -2418,13 +2387,13 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         try {
             File fileImage = new File(pathName);
             File parentFile = fileImage.getParentFile();
-            if(parentFile == null) {
+            if (parentFile == null) {
                 Toast.makeText(WordActivity.this, "保存失败", Toast.LENGTH_LONG).show();
                 return;
             }
-            if(!parentFile.exists()){
+            if (!parentFile.exists()) {
                 boolean dirFile = parentFile.mkdirs();
-                if(!dirFile){
+                if (!dirFile) {
                     Toast.makeText(WordActivity.this, "创建目录失败！", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -2445,15 +2414,14 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if(writer!=null)
-            {
+            if (writer != null) {
                 try {
                     writer.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(out!=null){
+            if (out != null) {
                 try {
                     out.close();
                 } catch (IOException e) {
@@ -2463,7 +2431,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void unbind(){
+    private void unbind() {
         musicControl.pausePlay();
         unbindService(conn);
     }
@@ -2489,7 +2457,7 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
     public void setLessonInterval(int from, int to) {
         fileBeginIndex = from;
         fileEndIndex = to;
-        if(fileIndex >= fileBeginIndex && fileIndex <= fileEndIndex) {
+        if (fileIndex >= fileBeginIndex && fileIndex <= fileEndIndex) {
             return;
         }
 
@@ -2501,14 +2469,14 @@ public class WordActivity extends AppCompatActivity implements View.OnClickListe
         _uri = f.getUri();
         reset();
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
         boolean bRet = true;
         //bRet = super.onKeyDown(keyCode, event);
 
-        if (KeyEvent.KEYCODE_HEADSETHOOK == keyCode)
-        {
+        if (KeyEvent.KEYCODE_HEADSETHOOK == keyCode) {
             onOptionsItemSelected(pauseItem);
             bRet = true;
         } else if (KeyEvent.KEYCODE_MEDIA_NEXT == keyCode) {
